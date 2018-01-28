@@ -2,9 +2,12 @@ const express = require('express');
 const app = express();
 const url = require('url');
 const moustache = require('mustache');
+const sortaPi = require('./sortaPi');
 
 let received = "http://www.funhouse.com/moons/";
 let parsedURL = url.parse(received);
+
+console.log(`The Egyptians thought Pi was [${sortaPi()} ].`)
 console.log(`The incoming was [${received}].`) 
 console.log(parsedURL.protocol);
 console.log(parsedURL.host);
