@@ -23,13 +23,15 @@ staffers.push(
 	}
 );
 
-console.log(staffers[0].salary);
-const app = express();
+
 app.get("/pancho", (req, res)=>{
-	res.send(``)
+	let n = 1;
+	res.send(`Looks like the name is _${staffers[n].name}_ and the salary is _${staffers[n].salary}_.`);
 } );
 
 // app.use(morgan('tiny'));
 
 
-app.listen(PORT);  
+app.listen(PORT,()=>{
+	console.log(`Listening on port ${PORT}.`);
+}  );  
