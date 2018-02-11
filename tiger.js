@@ -21,13 +21,30 @@ staffers.push(
 		salary: 36000,
 		campus: "Villa"
 	}
+	, 
+	{
+		name: "Chlorine",
+		salary: 15000,
+		campus: "Halogenia"
+	}, 
+	{
+		name: "Fluorine",
+		salary: 39900,
+		campus: "Halogenia"
+	}
 );
 
 
 app.get("/pancho", (req, res)=>{
-	let n = 1;
+	let n = 2;
 	res.send(`Looks like the name is _${staffers[n].name}_ and the salary is _${staffers[n].salary}_.`);
 } );
+
+app.get("/staff/:id", (req, res)=>{
+	let n = req.params.id ;
+	res.send(`Looks like the name is _${staffers[n].name}_ and the salary is _${staffers[n].salary}_.`);
+} );
+
 
 // app.use(morgan('tiny'));
 
