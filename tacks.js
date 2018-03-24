@@ -6,11 +6,8 @@
 
 const express = require("express");
 const napkin = express();
+const logger = require('morgan');
 const PORT = 3456;
-napkin.get("/", (req, res)=>{
-	res.end("Napkins.  Napkins for all my friends.");
-} );
-
 let a = [];
 let task = {
 	doers: ['Angel', 'Lopez', 'Nacho'],
@@ -22,6 +19,15 @@ let task = {
 	author: 'Tim'
 };
 a.push(task);
+
+napkin.use(logger("tiny"));
+napkin.get("/", (req, res)=>{
+	res.end("Napkins.  Napkins for all my friends.");
+} );
+napkin.get("/carl",(req, res)=>{
+	res.send(`From the "object": _${a[0].doers[1]}_ and _${a[0].description.length}_`);
+}  );
+
 napkin.listen(PORT);
 console.log(`Now listening.   On _${PORT}_`)
 
