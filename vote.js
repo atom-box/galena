@@ -4,12 +4,28 @@
 const express = require("express");
 const PORT = 4321;
 const app = express();
-app.get( /^\/users\/(..)(..)$/, (req, res, next)=>{
+console.log("Middleware at the head.");
+
+app.get( /^\/lisa\/(..)(..)$/, (req, res, next)=>{
+	const caught = req.params[0];
+	caught = "Tales from " + caught + " oceans."; 
 
 } );
-app.use((req, res)=>{
+app.get("/amy/:id", (req, res)=>{
+	const caught = id;
+	caught = "It's " + caught + " and more."; 
+	res.status(321).send(caught)
+} );
+app.get("/evan", (req, res)=>{
+	const caught = req.query.q;
+	caught = "The Last " + caught + " in Town."; 
+	res.status(321).send(caught)
+} );
 
+
+app.use((req, res)=>{
+	console.log("Middleware at the tail.");
 } );
 
 app.listen(4321);
-console.log(`listeningggg on _${PORT}_.`)
+console.log(`listeningggg on _${PORT}_.`);
