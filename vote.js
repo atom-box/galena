@@ -7,17 +7,17 @@ const app = express();
 console.log("Middleware at the head.");
 
 app.get( /^\/lisa\/(..)(..)$/, (req, res, next)=>{
-	const caught = req.params[0];
+	let caught = req.params[0];
 	caught = "Tales from " + caught + " oceans."; 
 
 } );
 app.get("/amy/:id", (req, res)=>{
-	const caught = id;
+	let caught = req.params.id;
 	caught = "It's " + caught + " and more."; 
 	res.status(321).send(caught)
 } );
 app.get("/evan", (req, res)=>{
-	const caught = req.query.q;
+	let caught = req.query.q;
 	caught = "The Last " + caught + " in Town."; 
 	res.status(321).send(caught)
 } );
